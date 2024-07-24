@@ -11,6 +11,7 @@
     "test:watch": "test --watch",
     "prepare": "husky",
     "format": "prettier --write ."
+    
   },
   "dependencies": {
     "next": "14.2.5",
