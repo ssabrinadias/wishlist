@@ -11,6 +11,9 @@ const config: Config = {
        maxWidth: {
         '1132px': '1132px',
       },
+      colors: {
+        customPurple: '#5a2d82',
+      },
     },
   },
   mode: 'jit',

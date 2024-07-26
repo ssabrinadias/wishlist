@@ -1,5 +1,6 @@
 import { getData } from '@/services/getData';
 import { Metadata } from 'next';
+import Header from './components/Header';
 import Home from './components/Home';
 
 export const metadata: Metadata = {
@@ -13,5 +14,10 @@ export const dynamic = 'force-dynamic';
 export default async function HomePage() {
   const data = await getData();
 
-  return <Home products={data.props.products} />;
+  return (
+    <>
+      <Header />
+      <Home products={data.props.products} />
+    </>
+  );
 }

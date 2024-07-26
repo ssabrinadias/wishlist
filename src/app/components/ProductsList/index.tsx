@@ -9,14 +9,13 @@ const ITEMS_PER_BATCH = 4;
 
 const ProductContent = ({ products }: { products: IProduct[] }) => {
   const [loadedItems, setLoadedItems] = useState(ITEMS_PER_BATCH);
-  const { ref, inView } = useInView({
+  const { inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
   useEffect(() => {
     if (inView) {
-      console.log('Loading more items');
       setLoadedItems((prevItems) => prevItems + ITEMS_PER_BATCH);
     }
   }, [inView]);

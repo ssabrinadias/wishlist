@@ -1,19 +1,23 @@
-import { Metadata, NextPage } from 'next';
+import Header from '@/components/Header';
+import Wishlist from '@/components/Wishlist';
+import { getData } from '@/services/getData';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Loja de Artigos Esportivos Online | Netshoes',
-  description: 'Encontre roupas, suplementos, tênis, chuteiras e mais na Netshoes, sua loja de artigos esportivos com preços incríveis. Visite-nos agora e aproveite!',
+  description:
+    'Encontre roupas, suplementos, tênis, chuteiras e mais na Netshoes, sua loja de artigos esportivos com preços incríveis. Visite-nos agora e aproveite!',
 };
 
-const Home: NextPage = () => {
-    
+export const dynamic = 'force-dynamic';
+
+export default async function HomePage() {
+  const data = await getData();
+
   return (
-    <div>
-      <main>
-        <h1>Home</h1>
-      </main>
-    </div>
+    <>
+      <Header />
+      <Wishlist products={data.props.products} />
+    </>
   );
-};
-
-export default Home;
+}

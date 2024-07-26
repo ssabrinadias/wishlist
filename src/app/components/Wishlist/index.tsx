@@ -3,24 +3,25 @@ import Product from '@/components/ProductsList';
 import { IProduct } from '@/interfaces/products';
 import { FC } from 'react';
 
-interface IWhisilist {
+interface HomeProps {
   products: IProduct[];
 }
 
-const Home: FC<IWhisilist> = ({ products }) => {
+const Home: FC<HomeProps> = ({ products }) => {
+  const showProducts = products.length;
   const voidList = () => (
     <div className="flex items-center justify-center h-80">
       <div className="text-center">
         <h2 className="text-2xl font-semibold mb-4">
-          Nenhum produto guardado em favorito
+          Nenhum produto encontrado
         </h2>
       </div>
     </div>
   );
   return (
-    <Container title="Home">
+    <Container title="Wishlist">
       <div className="flex flex-wrap -mx-2 justify-center">
-        {products?.length > 0 ? <Product products={products} /> : voidList()}
+        {showProducts ? <Product products={products} /> : voidList()}
       </div>
     </Container>
   );
