@@ -13,7 +13,7 @@ const Home: FC<HomeProps> = ({ products }) => {
     <div className="flex items-center justify-center h-80">
       <div className="text-center">
         <h2 className="text-2xl font-semibold mb-4">
-          Nenhum produto encontrado
+          Nenhum produto guardado em favorito
         </h2>
       </div>
     </div>

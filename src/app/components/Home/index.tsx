@@ -12,7 +12,7 @@ const Home: FC<Props> = ({ products }) => {
     <div className="flex items-center justify-center h-80">
       <div className="text-center">
         <h2 className="text-2xl font-semibold mb-4">
-          Nenhum produto guardado em favorito
+          Nenhum produto encontrado
         </h2>
       </div>
     </div>

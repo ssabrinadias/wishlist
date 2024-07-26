@@ -28,6 +28,8 @@ describe('Wishlist', () => {
     const emptyProducts: IProduct[] = [];
     render(<Wishlist products={emptyProducts} />);
 
-    expect(screen.getByText('Nenhum produto encontrado')).toBeInTheDocument();
+    expect(
+      screen.getByText('Nenhum produto guardado em favorito')
+    ).toBeInTheDocument();
   });
 });
