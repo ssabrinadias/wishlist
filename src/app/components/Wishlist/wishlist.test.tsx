@@ -2,16 +2,16 @@ import { IProduct } from '@/interfaces/products';
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import mock from '../../__mocks__/mock-products.json';
-import Home from './';
+import Wishlist from './';
 
 const mockProducts: IProduct[] = mock.products;
 
-describe('Home', () => {
-  test('should render corretly Home Component', async () => {
-    render(<Home products={mockProducts} />);
+describe('Wishlist', () => {
+  test('should render corretly Wishlist Component', async () => {
+    render(<Wishlist products={mockProducts} />);
 
     await waitFor(() => {
-      expect(screen.getByText('Home')).toBeInTheDocument();
+      expect(screen.getByText('Wishlist')).toBeInTheDocument();
     });
     const subTitles = screen.getAllByText(
       /Tênis Nike Revolution 7 Feminino - Preto\+Branco/i
@@ -26,7 +26,7 @@ describe('Home', () => {
 
   test('should render generic message when no products are available', () => {
     const emptyProducts: IProduct[] = [];
-    render(<Home products={emptyProducts} />);
+    render(<Wishlist products={emptyProducts} />);
 
     expect(screen.getByText('Nenhum produto encontrado')).toBeInTheDocument();
   });

@@ -3,11 +3,11 @@ import Product from '@/components/ProductsList';
 import { IProduct } from '@/interfaces/products';
 import { FC } from 'react';
 
-interface IWhisilist {
+interface Props {
   products: IProduct[];
 }
 
-const Home: FC<IWhisilist> = ({ products }) => {
+const Home: FC<Props> = ({ products }) => {
   const voidList = () => (
     <div className="flex items-center justify-center h-80">
       <div className="text-center">
