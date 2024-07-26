@@ -1,4 +1,4 @@
-import { IProduct } from '@/app/interfaces/products';
+import { IProduct } from '@/interfaces/products';
 import Image from 'next/image';
 import { useMemo } from 'react';
 

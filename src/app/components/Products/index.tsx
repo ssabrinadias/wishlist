@@ -1,6 +1,6 @@
 'use client';
 
-import { IProduct } from '@/app/interfaces/products';
+import { IProduct } from '@/interfaces/products';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ProductCard from '../ProductCard';
