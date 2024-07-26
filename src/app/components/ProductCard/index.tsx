@@ -1,9 +1,9 @@
-import { Product } from '@/app/interfaces/products';
+import { IProduct } from '@/app/interfaces/products';
 import Image from 'next/image';
 import { useMemo } from 'react';
 
 interface Props {
-  product: Product;
+  product: IProduct;
   priority?: boolean;
 }
 const ProductCard = ({ product, priority }: Props) => {

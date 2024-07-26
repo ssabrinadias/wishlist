@@ -1,13 +1,13 @@
 'use client';
 
-import { Product } from '@/app/interfaces/products';
+import { IProduct } from '@/app/interfaces/products';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ProductCard from '../ProductCard';
 
 const ITEMS_PER_BATCH = 4;
 
-const ProductContent = ({ products }: { products: Product[] }) => {
+const ProductContent = ({ products }: { products: IProduct[] }) => {
   const [loadedItems, setLoadedItems] = useState(ITEMS_PER_BATCH);
   const { ref, inView } = useInView({
     triggerOnce: false,

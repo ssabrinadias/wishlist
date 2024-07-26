@@ -1,14 +1,14 @@
-export interface ProductDetails {
+export interface IProductDetails {
   name: string;
   description: string;
 }
 
-export interface Product {
+export interface IProduct {
   code: string;
   name: string;
   available: boolean;
   visible: boolean;
-  details: ProductDetails;
+  details: IProductDetails;
   fullPriceInCents: string;
   salePriceInCents: string;
   rating: number;
@@ -16,9 +16,9 @@ export interface Product {
   stockAvailable: boolean;
 }
 
-export interface Response {
+export interface IResponseProduct {
   total: number;
   pageSize: number;
   totalPages: number;
-  products: Product[];
+  products: IProduct[];
 }
