@@ -5,7 +5,7 @@ import { server } from '../config/server';
 import HomePage from './page';
 
 describe('HomePage', () => {
-  test('should render corretly the Page Home', async () => {
+  test('should render corretly the Page Home ', async () => {
     render(await HomePage());
 
     const headingElement = screen.getByRole('heading', { name: /Home/i });

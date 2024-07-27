@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     'Encontre roupas, suplementos, tênis, chuteiras e mais na Netshoes, sua loja de artigos esportivos com preços incríveis. Visite-nos agora e aproveite!',
 };
 
-const Home = dynamicImport(() => import('@/components/Home'));
+const Home = dynamicImport(() => import('@/features/Home'));
 const Header = dynamicImport(() => import('@/components/Header'));
 
 export const dynamic = 'force-dynamic';

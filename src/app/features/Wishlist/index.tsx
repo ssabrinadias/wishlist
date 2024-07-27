@@ -1,5 +1,5 @@
 import Container from '@/components/Container';
-import Product from '@/components/ProductsList';
+import Product from '@/features/ProductsList';
 import { IProduct } from '@/interfaces/products';
 import { FC } from 'react';
 

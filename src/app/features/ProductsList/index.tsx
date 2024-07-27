@@ -3,7 +3,7 @@
 import { IProduct } from '@/interfaces/products';
 import { useEffect, useMemo, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import ProductCard from '../ProductCard';
+import ProductCard from '../../components/ProductCard';
 
 const ITEMS_PER_BATCH = 4;
 
@@ -24,13 +24,12 @@ const ProductContent = ({ products }: { products: IProduct[] }) => {
       products?.map((product, index) => (
         <ProductCard
           key={product.code + index}
-          product={products[0]}
-          priority={index === 0}
+          product={product}
+          priority={true}
         />
       )),
     [products]
   );
-
   return (
     <div className="flex flex-wrap -mx-2 justify-center">
       {productsMemoaize}
