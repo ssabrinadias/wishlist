@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaHeart, FaUserCircle } from 'react-icons/fa';
 import netshoesLogo from '../../../../public/netshoes-logo-2048x261.png';
+import MenuDropdown from '../MenuDropDown';
 
 const Header = () => {
   return (
@@ -28,6 +29,7 @@ const Header = () => {
           </Link>
           <div className="relative group">
             <FaUserCircle className="text-white h-8 w-8" />
+            <MenuDropdown />
           </div>
         </div>
       </div>

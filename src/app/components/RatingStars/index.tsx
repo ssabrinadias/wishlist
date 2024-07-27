@@ -13,11 +13,24 @@ const RatingStars: React.FC<RatingStarsProps> = ({ rating = 0 }) => {
   return (
     <div className="flex items-center mb-2">
       {[...Array(filledStars)].map((_, index) => (
-        <FaStar key={index} className="text-yellow-500 size-3.5" />
+        <FaStar
+          key={index}
+          className="text-yellow-500 size-3.5"
+          data-testid="filled-star"
+        />
       ))}
-      {hasHalfStar && <FaStarHalfAlt className="text-yellow-500 size-3.5" />}
+      {hasHalfStar && (
+        <FaStarHalfAlt
+          className="text-yellow-500 size-3.5"
+          data-testid="half-star"
+        />
+      )}
       {[...Array(emptyStars)].map((_, index) => (
-        <FaStar key={index} className="text-gray-300 size-3.5" />
+        <FaStar
+          key={index}
+          className="text-gray-300 size-3.5"
+          data-testid="empty-star"
+        />
       ))}
       <span className="text-gray-600 text-xs ml-2">{rating.toFixed(1)}</span>
     </div>
