@@ -6,11 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "test": "jest",
     "test:watch": "test --watch",
     "prepare": "husky",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "eslint . --ext ts --ext tsx  --fix",
+    "check:lint": "eslint . --ext ts --ext tsx ",
+    "check:format": "prettier --check .",
+    "check:types": "tsc --pretty --noEmit",
+    "check:all": "yarn check:lint && yarn check:format && yarn check:types && yarn build"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.15",
