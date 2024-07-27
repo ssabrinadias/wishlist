@@ -60,8 +60,9 @@ const ProductCard = ({ product, priority }: Props) => {
           alt={name}
           fill
           style={{ objectFit: 'cover' }}
-          priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading="lazy"
+          quality="85"
         />
         <Wishlist />
       </div>
