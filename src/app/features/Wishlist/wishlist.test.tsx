@@ -2,38 +2,42 @@ import { IProduct } from '@/interfaces/products';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
-import Home from '.';
+import Wishlist from '.';
 import mock from '../../__mocks__/mock-products.json';
 
 const mockProducts: IProduct[] = mock.products;
 
-describe('Home', () => {
+describe('Wishlist', () => {
   const queryClient = new QueryClient();
-  test('should render corretly Home Component', async () => {
+  test('should render corretly Wishlist Component', async () => {
     render(
       <QueryClientProvider client={queryClient}>
-        <Home products={mockProducts} />
+        <Wishlist products={mockProducts} />
       </QueryClientProvider>
     );
-    await waitFor(() => {
-      expect(
-        screen.getAllByText(
-          /Tênis Nike Revolution 7 Feminino - Preto\+Branco/i
-        )[0]
-      ).toBeInTheDocument();
-    });
 
-    expect(screen.getByText(/Home/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Wishlist')).toBeInTheDocument();
+    });
+    const subTitles = screen.getAllByText(
+      /Tênis Nike Revolution 7 Feminino - Preto\+Branco/i
+    );
+    expect(subTitles).toHaveLength(3);
+    subTitles.forEach((subTitle) => {
+      expect(subTitle).toBeInTheDocument();
+    });
   });
 
   test('should render generic message when no products are available', () => {
     const emptyProducts: IProduct[] = [];
     render(
       <QueryClientProvider client={queryClient}>
-        <Home products={[]} />
+        <Wishlist products={emptyProducts} />
       </QueryClientProvider>
     );
 
-    expect(screen.getByText('Nenhum produto encontrado')).toBeInTheDocument();
+    expect(
+      screen.getByText('Nenhum produto guardado em favorito')
+    ).toBeInTheDocument();
   });
 });

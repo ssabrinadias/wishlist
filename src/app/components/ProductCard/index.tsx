@@ -52,6 +52,7 @@ const ProductCard = ({ product, priority }: Props) => {
     <div
       className="relative m-5 px-2 mb-4 rounded-sm shadow"
       style={{ width: '220px', height: '295px' }}
+      data-testid="product-item"
     >
       <div className="relative w-full h-36 mt-2">
         <Image
