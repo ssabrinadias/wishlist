@@ -17,6 +17,10 @@ export async function POST(request: Request) {
   const newProduct = await request.json();
 
   return NextResponse.json({ message: 'Product added to wishlist' }, { status: 201 });
+  // return NextResponse.json(
+  //     { error: 'Internal Server Error' },
+  //     { status: 500 }
+  //   );
 }
 
 export async function DELETE(request: Request) {

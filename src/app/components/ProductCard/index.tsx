@@ -1,25 +1,22 @@
+import useUpdateWishlist from '@/hooks/useUpdateTasks';
 import { IProduct } from '@/interfaces/products';
-import { UseMutateFunction } from '@tanstack/react-query';
 import Image from 'next/image';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 
 interface Props {
   product: IProduct;
   priority?: boolean;
-  handleWishlist: UseMutateFunction<
-    { message: string },
-    Error,
-    string,
-    unknown
-  >;
 }
 
-const ProductCard = ({ product, priority, handleWishlist }: Props) => {
+const ProductCard = ({ product, priority }: Props) => {
+  const { mutate, status } = useUpdateWishlist();
   const { salePriceInCents, fullPriceInCents, image, name, rating } = product;
   const hasDiscount = salePriceInCents && fullPriceInCents > salePriceInCents;
+  const [isFavorite, setIsFavorite] = useState(false);
   const switchWishItem = () => {
-    handleWishlist(product.code);
+    mutate(product.code);
+    setIsFavorite((status) => !status);
   };
   const price = useMemo(() => {
     return (
@@ -35,6 +32,22 @@ const ProductCard = ({ product, priority, handleWishlist }: Props) => {
       </>
     );
   }, [fullPriceInCents, hasDiscount, salePriceInCents]);
+  useEffect(() => {
+    if (status === 'error') {
+      setIsFavorite(false);
+    }
+  }, [status]);
+
+  const heartColorClass = isFavorite ? 'text-red-500' : 'text-gray-500';
+
+  const addWishlist = (
+    <button
+      className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-lg"
+      onClick={switchWishItem}
+    >
+      <FaHeart className={`h-5 w-5 ${heartColorClass}`} />
+    </button>
+  );
 
   return (
     <div
@@ -50,12 +63,7 @@ const ProductCard = ({ product, priority, handleWishlist }: Props) => {
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <button
-          className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-lg"
-          onClick={switchWishItem}
-        >
-          <FaHeart className="h-5 w-5 text-gray-500" />
-        </button>
+        {addWishlist}
       </div>
       <div className="px-1 py-4">
         <div className="font-bold text-base mb-2">{name}</div>
