@@ -8,6 +8,7 @@ interface Props {
 }
 
 const Home: FC<Props> = ({ products }) => {
+  const showProducts = products?.length;
   const voidList = () => (
     <div className="flex items-center justify-center h-80">
       <div className="text-center">
@@ -20,7 +21,7 @@ const Home: FC<Props> = ({ products }) => {
   return (
     <Container title="Home">
       <div className="flex flex-wrap -mx-2 justify-center">
-        {products?.length > 0 ? <Product products={products} /> : voidList()}
+        {showProducts ? <Product products={products} /> : voidList()}
       </div>
     </Container>
   );

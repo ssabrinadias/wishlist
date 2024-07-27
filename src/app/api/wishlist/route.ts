@@ -12,3 +12,16 @@ export async function GET() {
 
 
 }
+
+export async function POST(request: Request) {
+  const newProduct = await request.json();
+
+  return NextResponse.json({ message: 'Product added to wishlist' }, { status: 201 });
+}
+
+export async function DELETE(request: Request) {
+  const { id } = await request.json();
+ 
+
+  return NextResponse.json({ message: 'Product removed from wishlist' }, { status: 200 });
+}

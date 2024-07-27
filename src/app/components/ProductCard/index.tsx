@@ -1,4 +1,5 @@
 import { IProduct } from '@/interfaces/products';
+import { UseMutateFunction } from '@tanstack/react-query';
 import Image from 'next/image';
 import { useMemo } from 'react';
 import { FaHeart } from 'react-icons/fa';
@@ -6,11 +7,20 @@ import { FaHeart } from 'react-icons/fa';
 interface Props {
   product: IProduct;
   priority?: boolean;
+  handleWishlist: UseMutateFunction<
+    { message: string },
+    Error,
+    string,
+    unknown
+  >;
 }
 
-const ProductCard = ({ product, priority }: Props) => {
+const ProductCard = ({ product, priority, handleWishlist }: Props) => {
   const { salePriceInCents, fullPriceInCents, image, name, rating } = product;
   const hasDiscount = salePriceInCents && fullPriceInCents > salePriceInCents;
+  const switchWishItem = () => {
+    handleWishlist(product.code);
+  };
   const price = useMemo(() => {
     return (
       <>
@@ -24,7 +34,7 @@ const ProductCard = ({ product, priority }: Props) => {
         </span>
       </>
     );
-  }, [product]);
+  }, [fullPriceInCents, hasDiscount, salePriceInCents]);
 
   return (
     <div
@@ -40,7 +50,10 @@ const ProductCard = ({ product, priority }: Props) => {
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <button className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-lg">
+        <button
+          className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-lg"
+          onClick={switchWishItem}
+        >
           <FaHeart className="h-5 w-5 text-gray-500" />
         </button>
       </div>
