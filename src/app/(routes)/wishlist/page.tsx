@@ -1,4 +1,4 @@
-import { getProducts } from '@/services/getProducts';
+import { getWishlist } from '@/services/getWishlist';
 import { Metadata } from 'next';
 import dynamicImport from 'next/dynamic';
 
@@ -14,9 +14,10 @@ const Header = dynamicImport(() => import('@/components/Header'));
 export const dynamic = 'force-dynamic';
 
 export default async function WhislistPage() {
-  //This exception is handled by default by errorBoundary
-  const data = await getProducts();
+  const sessionCookie = 'a239119c-47a2-45d7-b739-90461a5bddf4';
+  const userId = '231fd54d-ff64-4bbe-b261-d8c7224895c6';
 
+  const data = await getWishlist(userId, sessionCookie);
   return (
     <>
       <Header />
