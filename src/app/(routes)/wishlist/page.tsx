@@ -13,7 +13,7 @@ const Header = dynamicImport(() => import('@/components/Header'));
 
 export const dynamic = 'force-dynamic';
 
-export default async function HomePage() {
+export default async function WhislistPage() {
   //This exception is handled by default by errorBoundary
   const data = await getProducts();
 

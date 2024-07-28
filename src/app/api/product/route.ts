@@ -1,15 +1,20 @@
 import { NextResponse } from 'next/server';
 
-const API_URL = 'http://localhost:9000/products';
-
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const page = searchParams.get('page') || '1';
+  const pageSize = searchParams.get('pageSize') || '8';
+
   try {
-    const response = await fetch(API_URL);
+    const apiUrl = `http://localhost:9000/products?page=${page}&pageSize=${pageSize}`;
+    const response = await fetch(apiUrl, {
+      cache: 'no-store'
+    });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch wishlist');
+      throw new Error('Failed to fetch product');
     }
 
     const data = await response.json();
@@ -19,14 +24,13 @@ export async function GET() {
       },
     });
   } catch (error) {
-    
-     let errorMessage = 'An unknown error occurred';
-      if (error instanceof Error) {
-        errorMessage = error.message;
-      } else if (typeof error === 'string') {
-        errorMessage = error;
-      }
+    let errorMessage = 'An unknown error occurred';
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    } else if (typeof error === 'string') {
+      errorMessage = error;
+    }
 
-      return NextResponse.json({ error: errorMessage }, { status: 500 });
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
