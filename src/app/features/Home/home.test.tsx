@@ -5,14 +5,12 @@ import { render, screen, waitFor } from '@testing-library/react';
 import Home from '.';
 import mock from '../../__mocks__/mock-products.json';
 
-const mockProducts: IProduct[] = mock.products;
-
 describe('Home', () => {
   const queryClient = new QueryClient();
   test('should render corretly Home Component', async () => {
     render(
       <QueryClientProvider client={queryClient}>
-        <Home products={mockProducts} />
+        <Home data={mock} />
       </QueryClientProvider>
     );
     await waitFor(() => {
@@ -30,7 +28,7 @@ describe('Home', () => {
     const emptyProducts: IProduct[] = [];
     render(
       <QueryClientProvider client={queryClient}>
-        <Home products={[]} />
+        <Home data={null} />
       </QueryClientProvider>
     );
 

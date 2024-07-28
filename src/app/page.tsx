@@ -20,7 +20,7 @@ export default async function HomePage() {
   return (
     <>
       <Header />
-      <Home products={data.props.products} />
+      <Home data={data.props} />
     </>
   );
 }
