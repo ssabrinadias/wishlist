@@ -1,14 +1,32 @@
 import { NextResponse } from 'next/server';
-import mock from '../../__mocks__/mock-products.json';
 
-export const dynamic = 'force-dynamic'
+const API_URL = 'http://localhost:9000/products';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  return NextResponse.json(mock, {
-    headers: {
-      'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=59',
-    },
-  });
+  try {
+    const response = await fetch(API_URL);
 
+    if (!response.ok) {
+      throw new Error('Failed to fetch wishlist');
+    }
 
+    const data = await response.json();
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=59',
+      },
+    });
+  } catch (error) {
+    
+     let errorMessage = 'An unknown error occurred';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      }
+
+      return NextResponse.json({ error: errorMessage }, { status: 500 });
+  }
 }

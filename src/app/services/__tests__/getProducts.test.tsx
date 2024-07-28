@@ -1,11 +1,11 @@
 import { rest } from 'msw';
 import { server } from '../../../config/server';
 import mock from '../../__mocks__/mock-products.json';
-import { getData } from '../getData';
+import { getProducts } from '../getProducts';
 
-describe('getData', () => {
+describe('getProducts', () => {
   it('deve buscar e retornar produtos com sucesso', async () => {
-    const result = await getData();
+    const result = await getProducts();
     expect(result.props.products).toEqual(mock.products);
   });
 
@@ -16,6 +16,6 @@ describe('getData', () => {
       })
     );
 
-    await expect(getData()).rejects.toThrow('Failed to fetch data');
+    await expect(getProducts()).rejects.toThrow('Failed to fetch data');
   });
 });

@@ -1,4 +1,4 @@
-import { getData } from '@/services/getData';
+import { getProducts } from '@/services/getProducts';
 import { Metadata } from 'next';
 import dynamicImport from 'next/dynamic';
 
@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   //This exception is handled by default by errorBoundary
-  const data = await getData();
+  const data = await getProducts();
 
   return (
     <>
