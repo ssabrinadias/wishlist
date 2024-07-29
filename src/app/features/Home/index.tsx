@@ -2,7 +2,8 @@
 
 import Container from '@/components/Container';
 import Pagination from '@/components/Pagination';
-import Product from '@/features/ProductsList';
+import Product from '@/components/ProductsList';
+import { ProductProvider } from '@/context/ProductContext';
 import { IResponseProduct } from '@/interfaces/products';
 import { FC, useState } from 'react';
 interface Props {
@@ -24,20 +25,22 @@ const Home: FC<Props> = ({ data }) => {
   );
   return (
     <Container title="Home">
-      <div className="flex flex-wrap -mx-2 justify-center">
-        {showProducts ? (
-          <>
-            <Product products={products} />
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages || 0}
-              onPageChange={setCurrentPage}
-            />
-          </>
-        ) : (
-          voidList()
-        )}
-      </div>
+      <ProductProvider initialProducts={products}>
+        <div className="flex flex-wrap -mx-2 justify-center">
+          {showProducts ? (
+            <>
+              <Product />
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages || 0}
+                onPageChange={setCurrentPage}
+              />
+            </>
+          ) : (
+            voidList()
+          )}
+        </div>
+      </ProductProvider>
     </Container>
   );
 };

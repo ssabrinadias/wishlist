@@ -1,10 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useRouter } from 'next/router';
 import Header from './';
-jest.mock('next/router');
 
-const useRouterMock = useRouter as jest.Mock;
 describe('Header', () => {
   test('renders Header component correctly', () => {
     render(<Header />);
@@ -15,22 +12,36 @@ describe('Header', () => {
     const wishlistLink = screen.getAllByText('Wishlist');
     expect(wishlistLink[0]).toBeInTheDocument();
   });
+
   test('should navigate to home page when logo is clicked', () => {
-    const pushMock = jest.fn();
-    useRouterMock.mockReturnValue({
-      push: pushMock,
-      prefetch: jest.fn(),
-      route: '/',
-      pathname: '/',
-      query: {},
-      asPath: '/',
-    });
+    const originalLocation = window.location;
+    window.location = { href: '' } as any;
 
     render(<Header />);
 
     const logoLink = screen.getAllByAltText('Netshoes Logo')[0];
     userEvent.click(logoLink);
 
-    expect(window.location.pathname).toBe('/');
+    waitFor(() => {
+      expect(window.location.href).toBe('/');
+    });
+
+    window.location = originalLocation;
+  });
+
+  test('should navigate to wishlist page when wishlist link is clicked', () => {
+    const originalLocation = window.location;
+    window.location = { href: '' } as any;
+
+    render(<Header />);
+
+    const wishlistLink = screen.getByText('Wishlist');
+    userEvent.click(wishlistLink);
+
+    waitFor(() => {
+      expect(window.location.href).toBe('http://localhost/wishlist');
+    });
+
+    window.location = originalLocation;
   });
 });

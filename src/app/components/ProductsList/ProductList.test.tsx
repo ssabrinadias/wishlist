@@ -1,14 +1,13 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
 import Product from '.';
-import mock from '../../__mocks__/mock-products.json';
 
 describe('Home', () => {
   const queryClient = new QueryClient();
   test('renders ProductContent and corretly quantify itens ', async () => {
     render(
       <QueryClientProvider client={queryClient}>
-        <Product products={mock.products} />
+        <Product />
       </QueryClientProvider>
     );
     const itens = await screen.getAllByTestId('product-item');
@@ -17,7 +16,7 @@ describe('Home', () => {
   test('renders ProductContent with empty products array without crashing', () => {
     render(
       <QueryClientProvider client={queryClient}>
-        <Product products={[]} />
+        <Product />
       </QueryClientProvider>
     );
 

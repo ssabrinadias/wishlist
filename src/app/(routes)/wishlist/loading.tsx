@@ -7,7 +7,7 @@ const ProductSkeleton = () => {
       <Header />
       <Container title="Wishlist">
         <div className="flex flex-wrap -mx-2 justify-center">
-          {Array.from({ length: 8 }).map((_, index) => (
+          {Array.from({ length: 4 }).map((_, index) => (
             <div
               className="m-5 px-2 mb-4 w-[220px] h-[295px] rounded-sm shadow bg-gray-200 animate-pulse"
               key={index}

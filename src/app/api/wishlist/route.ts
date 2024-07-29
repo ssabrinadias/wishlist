@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getRequestBody } from '../../../utils/parserBody';
 
-export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -22,10 +21,14 @@ export async function GET(req: Request) {
     }
 
     const data = await response.json();
-    return NextResponse.json(data);
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=59',
+      },
+    });
 
   } catch (error) {
-    let errorMessage = 'An unknown error occurred in wishlist';
+    let errorMessage = 'An unknown error occurred in w';
     if (error instanceof Error) {
       errorMessage = error.message;
     } else if (typeof error === 'string') {
@@ -40,9 +43,9 @@ export async function GET(req: Request) {
 export async function POST(req: NextRequest) {
   
   const data = await getRequestBody(req);
-  const {userId,productId} = data;
+  const {userId,productId, action} = data;
   const apiUrl = 'http://localhost:9000';
-   const response = await fetch(`${apiUrl}/wishlist/${userId}`, {
+   const response = await fetch(`${apiUrl}/wishlist/${userId}/${action}`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',

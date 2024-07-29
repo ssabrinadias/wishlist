@@ -14,15 +14,17 @@ export async function GET(req: Request) {
     const apiUrl = `http://localhost:9000/products?page=${page}&pageSize=${pageSize}`;
     const response = await fetch(apiUrl, {
       cache: 'no-cache',
-      next: { revalidate: 10 },
       headers: myHeaders
     });
     if (!response.ok) {
       throw new Error('Failed to fetch product');
     }
     const data = await response.json();
-    console.log(data)
-    return NextResponse.json(data);
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=59',
+      },
+    })
 
   } catch (error) {
     let errorMessage = 'An unknown error occurred';

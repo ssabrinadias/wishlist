@@ -1,3 +1,4 @@
+import { useProductContext } from '@/context/ProductContext';
 import useUpdateWishlist from '@/hooks/useUpdateTasks';
 import { IProduct } from '@/interfaces/products';
 import Image from 'next/image';
@@ -11,10 +12,12 @@ import styles from './ProductCard.module.css';
 interface Props {
   product: IProduct;
   priority?: boolean;
+  wishlist?: boolean;
 }
 
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ product, wishlist }: Props) => {
   const { mutate, status } = useUpdateWishlist();
+  const { setUpdateWishlist } = useProductContext();
   const {
     salePriceInCents,
     fullPriceInCents,
@@ -24,9 +27,13 @@ const ProductCard = ({ product }: Props) => {
     isInWishlist,
   } = product;
   const hasDiscount = salePriceInCents && fullPriceInCents > salePriceInCents;
-  const [isFavorite, setIsFavorite] = useState(isInWishlist);
+  const [isFavorite, setIsFavorite] = useState(wishlist || isInWishlist);
   const switchWishItem = () => {
-    mutate({ productId: product.id, userId: dataConfig.userId });
+    mutate({
+      productId: product.id,
+      userId: dataConfig.userId,
+      statusUpdate: !isFavorite,
+    });
     setIsFavorite((status) => !status);
   };
 
@@ -34,7 +41,10 @@ const ProductCard = ({ product }: Props) => {
     if (status === 'error') {
       setIsFavorite(false);
     }
-  }, [status]);
+    if (wishlist && status === 'success') {
+      setUpdateWishlist(true);
+    }
+  }, [setUpdateWishlist, status, wishlist]);
 
   const heartColorClass = isFavorite ? 'text-red-500' : 'text-gray-500';
 

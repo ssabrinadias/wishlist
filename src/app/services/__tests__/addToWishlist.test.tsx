@@ -1,13 +1,17 @@
 import { rest } from 'msw';
 import { server } from '../../../config/server';
-import { addToWishlist } from '../addToWishlist';
+import { updateToWishlist } from '../updateToWishlist';
 
 describe('addToWishlist', () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   it('should add product to wishlist successfully', async () => {
     const productId = '1';
-    const response = await addToWishlist({ productId, userId: '1' });
+    const response = await updateToWishlist({
+      productId: '1',
+      statusUpdate: true,
+      userId: '2',
+    });
     expect(response).toEqual({
       message: 'Product added to wishlist successfully',
     });
@@ -24,8 +28,12 @@ describe('addToWishlist', () => {
     );
 
     const productId = '1';
-    await expect(addToWishlist({ productId, userId: '1' })).rejects.toThrow(
-      'Failed to add product to wishlist'
-    );
+    await expect(
+      await updateToWishlist({
+        productId: '1',
+        statusUpdate: true,
+        userId: '2',
+      })
+    ).rejects.toThrow('Failed to add product to wishlist');
   });
 });

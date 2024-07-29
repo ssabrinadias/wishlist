@@ -1,5 +1,7 @@
+'use client';
 import Container from '@/components/Container';
-import Product from '@/features/ProductsList';
+import Product from '@/components/WishlistList';
+import { ProductProvider } from '@/context/ProductContext';
 import { IProduct } from '@/interfaces/products';
 import { FC } from 'react';
 
@@ -19,11 +21,13 @@ const Home: FC<HomeProps> = ({ products }) => {
     </div>
   );
   return (
-    <Container title="Wishlist">
-      <div className="flex flex-wrap -mx-2 justify-center">
-        {showProducts ? <Product products={products} /> : voidList()}
-      </div>
-    </Container>
+    <ProductProvider initialProducts={products}>
+      <Container title="Wishlist">
+        <div className="flex flex-wrap -mx-2 justify-center">
+          {showProducts ? <Product /> : voidList()}
+        </div>
+      </Container>
+    </ProductProvider>
   );
 };
 
