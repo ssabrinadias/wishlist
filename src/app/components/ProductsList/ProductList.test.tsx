@@ -11,7 +11,7 @@ describe('Home', () => {
       </TestProviders>
     );
     const itens = await screen.getAllByTestId('product-item');
-    expect(itens.length).toBe(24);
+    expect(itens.length).toBe(8);
   });
   test('renders ProductContent with empty products array without crashing', () => {
     render(

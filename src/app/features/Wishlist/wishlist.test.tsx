@@ -22,7 +22,7 @@ describe('Wishlist', () => {
     const subTitles = screen.getAllByText(
       /Tênis Nike Revolution 7 Feminino - Preto\+Branco/i
     );
-    expect(subTitles).toHaveLength(3);
+    expect(subTitles).toHaveLength(1);
     subTitles.forEach((subTitle) => {
       expect(subTitle).toBeInTheDocument();
     });

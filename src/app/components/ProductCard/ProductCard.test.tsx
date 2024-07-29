@@ -1,7 +1,11 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import TestProviders from '@/__mocks__/TestProviders';
+import { QueryClient } from '@tanstack/react-query';
 import '@testing-library/jest-dom';
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import mockProduct from '../../__mocks__/mock-products.json';
+import {
+  default as mock,
+  default as mockProduct,
+} from '../../__mocks__/mock-products.json';
 import ProductCard from '../ProductCard';
 
 describe('ProductCard', () => {
@@ -9,9 +13,9 @@ describe('ProductCard', () => {
 
   test('renders product details correctly', async () => {
     render(
-      <QueryClientProvider client={queryClient}>
+      <TestProviders initialProducts={mock.products}>
         <ProductCard product={mockProduct.products[1]} priority={true} />
-      </QueryClientProvider>
+      </TestProviders>
     );
 
     await expect(
@@ -26,9 +30,9 @@ describe('ProductCard', () => {
 
   test('wishlist button click updates isFavorite state', async () => {
     render(
-      <QueryClientProvider client={queryClient}>
+      <TestProviders initialProducts={mock.products}>
         <ProductCard product={mockProduct.products[0]} priority={true} />
-      </QueryClientProvider>
+      </TestProviders>
     );
 
     const button = await screen.getByTestId('wishlist-button');
