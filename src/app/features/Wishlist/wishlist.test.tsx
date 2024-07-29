@@ -5,7 +5,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import Wishlist from '.';
 import mock from '../../__mocks__/mock-products.json';
 
-const mockProducts: IProduct[] = mock.products;
+const mockProducts = mock.products;
 
 describe('Wishlist', () => {
   const queryClient = new QueryClient();

@@ -7,7 +7,7 @@ describe('addToWishlist', () => {
 
   it('should add product to wishlist successfully', async () => {
     const productId = '1';
-    const response = await addToWishlist(productId);
+    const response = await addToWishlist({ productId, userId: '1' });
     expect(response).toEqual({
       message: 'Product added to wishlist successfully',
     });
@@ -24,7 +24,7 @@ describe('addToWishlist', () => {
     );
 
     const productId = '1';
-    await expect(addToWishlist(productId)).rejects.toThrow(
+    await expect(addToWishlist({ productId, userId: '1' })).rejects.toThrow(
       'Failed to add product to wishlist'
     );
   });

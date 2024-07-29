@@ -3,6 +3,7 @@ import { IProduct } from '@/interfaces/products';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
+import dataConfig from '../../__mocks__/data-config.json';
 import ProductPrice from '../ProductPrice';
 import RatingStars from '../RatingStars';
 import styles from './ProductCard.module.css';
@@ -12,13 +13,20 @@ interface Props {
   priority?: boolean;
 }
 
-const ProductCard = ({ product, priority }: Props) => {
+const ProductCard = ({ product }: Props) => {
   const { mutate, status } = useUpdateWishlist();
-  const { salePriceInCents, fullPriceInCents, image, name, rating } = product;
+  const {
+    salePriceInCents,
+    fullPriceInCents,
+    image,
+    name,
+    rating,
+    isInWishlist,
+  } = product;
   const hasDiscount = salePriceInCents && fullPriceInCents > salePriceInCents;
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(isInWishlist);
   const switchWishItem = () => {
-    mutate(product.code);
+    mutate({ productId: product.id, userId: dataConfig.userId });
     setIsFavorite((status) => !status);
   };
 

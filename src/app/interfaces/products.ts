@@ -14,6 +14,8 @@ export interface IProduct {
   rating: number;
   image: string;
   stockAvailable: boolean;
+  id: string
+   isInWishlist?: boolean
 }
 
 export interface IResponseProduct {

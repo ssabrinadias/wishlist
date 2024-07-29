@@ -1,6 +1,7 @@
 import { getWishlist } from '@/services/getWishlist';
 import { Metadata } from 'next';
 import dynamicImport from 'next/dynamic';
+import dataConfig from '../../__mocks__/data-config.json';
 
 export const metadata: Metadata = {
   title: 'Loja de Artigos Esportivos Online | Netshoes',
@@ -14,10 +15,10 @@ const Header = dynamicImport(() => import('@/components/Header'));
 export const dynamic = 'force-dynamic';
 
 export default async function WhislistPage() {
-  const sessionCookie = 'a239119c-47a2-45d7-b739-90461a5bddf4';
-  const userId = '231fd54d-ff64-4bbe-b261-d8c7224895c6';
+  const sessionCookie = 'a239119c-47a2-45d7-b739-90461a5bddf4'; //hardcode todo
+  const userId = dataConfig.userId; //hardcode todo
 
-  const data = await getWishlist(userId, sessionCookie);
+  const data = await getWishlist(userId);
   return (
     <>
       <Header />

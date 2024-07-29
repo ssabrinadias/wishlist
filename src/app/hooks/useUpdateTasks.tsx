@@ -4,10 +4,16 @@ import { addToWishlist } from '@/services/addToWishlist';
 
 const useUpdateWishlist = () => {
   return useMutation({
-    mutationFn: (id: string) => {
-      return addToWishlist(id);
+    mutationFn: ({
+      productId,
+      userId,
+    }: {
+      productId: string;
+      userId: string;
+    }) => {
+      return addToWishlist({ productId, userId });
     },
-    onError: (error) => console.log('erro', error),
+    onError: (error) => console.log('Failed to add product to wishlist', error),
   });
 };
 
