@@ -17,7 +17,7 @@
       "salePriceInCents": "30399",
       "rating": 4.5,
       "image": "https://static.netshoes.com.br/produtos/tenis-nike-revolution-7-feminino/26/JD8-6363-026/JD8-6363-026_zoom1.jpg?ts=1708096757?ims=544x",
-      "stockAvailable": true,
+      "stockAvailable": true
     },
     {
       "id": "2",
@@ -131,6 +131,5 @@
       "image": "https://static.netshoes.com.br/produtos/bone-new-era-9forty-new-york-aba-curva-preto/06/F83-5256-006/F83-5256-006_zoom1.jpg?ts=1694533028?ims=544x",
       "stockAvailable": true
     }
-   
   ]
 }

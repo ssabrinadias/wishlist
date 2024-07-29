@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { useRouter } from 'next/router';
 import 'whatwg-fetch';
-import { server } from "./src/config/server";
+import { server } from './src/config/server';
 
 const originalEnv = process.env;
 
@@ -21,8 +21,8 @@ beforeEach(() => {
   jest.resetModules();
   process.env = {
     ...originalEnv,
-    NEXT_API_URL: "http://localhost:3000",
-    NEXT_PUBLIC_API_URL:"http://localhost:3000"
+    NEXT_API_URL: 'http://localhost:3000',
+    NEXT_PUBLIC_API_URL: 'http://localhost:3000',
   };
 });
 

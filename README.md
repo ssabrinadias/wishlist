@@ -32,10 +32,9 @@ The project is an e-commerce application that allows users to add products to a 
 - Tailwind CSS
 - PostCSS
 
-
 ### Project Structure
 
- ```bash
+```bash
 public/
 src/
 ├── app/
@@ -55,7 +54,7 @@ src/
 │   ├── not-found.tsx
 │   ├── page.tsx
 └── ...
- ```
+```
 
 ## Installation
 
@@ -66,3 +65,4 @@ To get started with the project, you need to have Node.js (v20) and Yarn install
    ```bash
    git clone https://github.com/ssabrinadias/wishlist
    cd wishlist
+   ```

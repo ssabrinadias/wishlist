@@ -1,4 +1,4 @@
-import { IProduct } from "./products";
+import { IProduct } from './products';
 
 export interface IResponseWishlist {
   userId: number;

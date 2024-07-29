@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest } from 'next/server';
 
 export async function getRequestBody(request: NextRequest) {
   const requestClone = request.clone();

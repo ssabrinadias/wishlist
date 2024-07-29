@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getRequestBody } from '../../../utils/parserBody';
 
-
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const userId = searchParams.get('userId')  
+  const userId = searchParams.get('userId');
 
   if (!userId) {
     throw new Error('Failed user id required');
@@ -13,7 +12,7 @@ export async function GET(req: Request) {
   try {
     const apiUrl = `http://localhost:9000/wishlist/${userId}`;
     const response = await fetch(apiUrl, {
-      cache: 'no-store'
+      cache: 'no-store',
     });
 
     if (!response.ok) {
@@ -26,7 +25,6 @@ export async function GET(req: Request) {
         'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=59',
       },
     });
-
   } catch (error) {
     let errorMessage = 'An unknown error occurred in w';
     if (error instanceof Error) {
@@ -39,27 +37,24 @@ export async function GET(req: Request) {
   }
 }
 
-
 export async function POST(req: NextRequest) {
-  
   const data = await getRequestBody(req);
-  const {userId,productId, action} = data;
+  const { userId, productId, action } = data;
   const apiUrl = 'http://localhost:9000';
-   const response = await fetch(`${apiUrl}/wishlist/${userId}/${action}`, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ productId, userId }),
+  const response = await fetch(`${apiUrl}/wishlist/${userId}/${action}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ productId, userId }),
   });
   if (!response.ok) {
     throw new Error('Failed to add product to  API');
   }
 
-     return NextResponse.json(data, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=59',
-      },
-    });
+  return NextResponse.json(data, {
+    headers: {
+      'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=59',
+    },
+  });
 }
-

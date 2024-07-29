@@ -1,23 +1,23 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import TestProviders from '@/__mocks__/TestProviders';
 import { render, screen } from '@testing-library/react';
 import Product from '.';
+import mock from '../../__mocks__/mock-products.json';
 
 describe('Home', () => {
-  const queryClient = new QueryClient();
   test('renders ProductContent and corretly quantify itens ', async () => {
     render(
-      <QueryClientProvider client={queryClient}>
+      <TestProviders initialProducts={mock.products}>
         <Product />
-      </QueryClientProvider>
+      </TestProviders>
     );
     const itens = await screen.getAllByTestId('product-item');
     expect(itens.length).toBe(24);
   });
   test('renders ProductContent with empty products array without crashing', () => {
     render(
-      <QueryClientProvider client={queryClient}>
+      <TestProviders>
         <Product />
-      </QueryClientProvider>
+      </TestProviders>
     );
 
     expect(
