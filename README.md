@@ -18,7 +18,7 @@ O projeto é uma aplicação de e-commerce que permite aos usuários adicionar p
 
     Optamos por usar o MongoDB como nossa solução de armazenamento visando o uso do SSR garantindo acesso e persistência das informações atraves de um BFF onde ele esta localizado.
 
-### Technologies
+### Tecnologias
 
 - React
 - Next
@@ -31,12 +31,12 @@ O projeto é uma aplicação de e-commerce que permite aos usuários adicionar p
 - Tailwind CSS
 - PostCSS
 
-### Versões de instalação
+### Versões
 
 - Project Version: `0.0.0`
 - Node Version: `20+`
 
-## Installation
+## Instalação
 
 Para começar com o projeto, você precisa ter o Node.js (v20) e o yarn instalados.
 
@@ -63,7 +63,7 @@ yarn install
 
 ## Scripts
 
-### Development
+### Desenvolvimento
 
 To start the development server:
 
