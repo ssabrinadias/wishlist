@@ -1,23 +1,23 @@
 # Wishlist
 
-### Description
+### Descrição
 
-The project is an e-commerce application that allows users to add products to a wishlist. Users can view, add, and manage their desired products.
+O projeto é uma aplicação de e-commerce que permite aos usuários adicionar produtos a uma lista de desejos. Os usuários podem visualizar, adicionar e gerenciar seus produtos desejados.
 
-### Features
+### Funcionalidades
+- Adicionar produtos à lista de desejos
+- Visualizar a lista de desejos
+- Remover produtos da lista de desejos
 
-- Add products to the wishlist
-- View the wishlist
-- Remove products from the wishlist
 
-### About
+### Decisões de Arquitetura
+    Este projeto é uma aplicação React construída com Next14. Ele utiliza várias ferramentas e bibliotecas para desenvolvimento, testes e construção da aplicação. A arquitetura é baseada em uma Arquitetura Orientada a Componentes, onde o foco principal é construir o sistema a partir de componentes modulares e independentes. 
 
-    This project is a React application built with Vite. It leverages various tools and libraries for development, testing, and building the application. The architecture is based on a Component-Oriented Architecture (COA), where the primary focus is on building the system from modular and independent components. In this approach, each component represents a specific functionality of the system and interacts with other components in a well-defined manner. This architecture allows for greater modularity, reusability, and maintainability of the system. Components can be developed, tested, and updated separately, promoting a more flexible and scalable system. Changes in one part of the system have a controlled impact on other parts.
+    Optamos por usar SSR (Server-Side Rendering) em nossa aplicação para melhorar o SEO, acelerar o carregamento inicial, proporcionar uma melhor experiência de usuário, e facilitar a manutenção e o desenvolvimento.
 
-### Version
+    Optamos por usar o MongoDB como nossa solução de armazenamento visando o uso do SSR garantindo acesso e persistência das informações atraves de um BFF onde ele esta localizado.
 
-- Project Version: `0.0.0`
-- Node Version: `20+`
+    
 
 ### Technologies
 
@@ -32,37 +32,45 @@ The project is an e-commerce application that allows users to add products to a 
 - Tailwind CSS
 - PostCSS
 
-### Project Structure
+### Versões de instalação
 
-```bash
-public/
-src/
-├── app/
-│   ├── __mocks__/
-│   ├── (routes)/
-│   ├── api/
-│   ├── components/
-│   ├── context/
-│   ├── features/
-│   ├── hooks/
-│   ├── interfaces/
-│   ├── services/
-│   ├── styled/
-│   ├── error.tsx
-│   ├── HomePage.test.tsx
-│   ├── layout.tsx
-│   ├── not-found.tsx
-│   ├── page.tsx
-└── ...
-```
+- Project Version: `0.0.0`
+- Node Version: `20+`
 
 ## Installation
 
-To get started with the project, you need to have Node.js (v20) and Yarn installed. Follow the steps below to set up the project:
+Para começar com o projeto, você precisa ter o Node.js (v20) e o yarn instalados.
 
-1. Clone the repository:
+Clone the repository:
 
-   ```bash
-   git clone https://github.com/ssabrinadias/wishlist
-   cd wishlist
-   ```
+```bash
+git clone https://github.com/ssabrinadias/wishlist
+cd wishlist
+```
+
+
+Install dependencies:
+
+
+```bash
+yarn install
+```
+
+## Scripts
+
+### Development
+
+To start the development server:
+
+```bash
+yarn dev
+
+Running on port http://localhost:3000/
+```
+
+To run the tests:
+
+```bash
+ yarn test
+```
+
