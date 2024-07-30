@@ -1,11 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
 import { FaHeart, FaUserCircle } from 'react-icons/fa';
 import netshoesLogo from '../../../../public/netshoes-logo-2048x261.png';
 import MenuDropdown from '../MenuDropDown';
 
 const Header = () => {
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
   const handleNavigation = (url: string) => {
     window.location.href = url;
   };
@@ -20,6 +23,10 @@ const Header = () => {
         height={isMobile ? 19.5 : 25.2}
       />
     );
+  };
+
+  const handleUserIconClick = () => {
+    setIsDropdownVisible(!isDropdownVisible);
   };
 
   const mobileView = (
@@ -55,10 +62,7 @@ const Header = () => {
           <FaHeart className="mr-2" />
           <span>Wishlist</span>
         </div>
-        <div className="relative group">
-          <FaUserCircle className="text-white h-8 w-8" />
-          <MenuDropdown />
-        </div>
+        <MenuDropdown />
       </div>
     </div>
   );

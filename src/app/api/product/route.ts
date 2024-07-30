@@ -12,7 +12,7 @@ export async function GET(req: Request) {
   try {
     const apiUrl = `http://localhost:9000/products?page=${page}&pageSize=${pageSize}`;
     const response = await fetch(apiUrl, {
-      cache: 'no-cache',
+      cache: 'no-store',
       headers: myHeaders,
     });
     if (!response.ok) {
