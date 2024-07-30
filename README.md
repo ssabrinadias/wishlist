@@ -6,17 +6,15 @@ O projeto é uma aplicação de e-commerce que permite aos usuários adicionar p
 
 ### Funcionalidades
 
-- Adicionar produtos à lista de desejos
-- Visualizar a lista de desejos
-- Remover produtos da lista de desejos
+- Adicionar produtos à lista de favoritos
+- Visualizar a lista de favoritos
+- Remover produtos da lista de favoritos
 
 ### Decisões de Arquitetura
 
-    Este projeto é uma aplicação React construída com Next14. Ele utiliza várias ferramentas e bibliotecas para desenvolvimento, testes e construção da aplicação. A arquitetura é baseada em uma Arquitetura Orientada a Componentes, onde o foco principal é construir o sistema a partir de componentes modulares e independentes.
-
-    Optei por usar SSR (Server-Side Rendering) em nossa aplicação para melhorar o SEO, acelerar o carregamento inicial, proporcionar uma melhor experiência de usuário, e facilitar a manutenção e o desenvolvimento.
-
-    Optei por usar o MongoDB como nossa solução de armazenamento visando o uso do SSR garantindo acesso e persistência das informações atraves de um BFF onde ele esta localizado.
+Este projeto é uma aplicação React construída com Next14. Ele utiliza várias ferramentas e bibliotecas para desenvolvimento, testes e construção da aplicação. A arquitetura é baseada em uma Arquitetura Orientada a Componentes, onde o foco principal é construir o sistema a partir de componentes modulares e independentes.
+Optei por usar SSR (Server-Side Rendering) em nossa aplicação para melhorar o SEO, acelerar o carregamento inicial, proporcionar uma melhor experiência de usuário, e facilitar a manutenção e o desenvolvimento.
+Optei por usar o MongoDB como nossa solução de armazenamento visando o uso do SSR garantindo acesso e persistência das informações atraves de um BFF onde ele esta localizado.
 
 ### Tecnologias
 
