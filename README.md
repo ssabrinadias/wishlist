@@ -16,7 +16,7 @@ Este projeto é uma aplicação React construída com Next.js 14. Utilizei vári
 
 Optei por usar SSR (Server-Side Rendering) para melhorar o SEO, acelerar o carregamento inicial, proporcionar uma melhor experiência de usuário e facilitar a manutenção e o desenvolvimento.
 
-Escolhi o MongoDB como nossa solução de armazenamento devido ao uso do SSR, garantindo acesso e persistência das informações através de um BFF (Backend for Frontend) onde ele está localizado.
+Escolhi o MongoDB como  solução de armazenamento devido ao uso do SSR, garantindo acesso e persistência das informações através de um BFF (Backend for Frontend) onde ele está localizado.
 
 ### Tecnologias
 
