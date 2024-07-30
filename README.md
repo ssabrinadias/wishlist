@@ -12,9 +12,11 @@ O projeto é uma aplicação de e-commerce que permite aos usuários adicionar p
 
 ### Decisões de Arquitetura
 
-Este projeto é uma aplicação React construída com Next14. Ele utiliza várias ferramentas e bibliotecas para desenvolvimento, testes e construção da aplicação. A arquitetura é baseada em uma Arquitetura Orientada a Componentes, onde o foco principal é construir o sistema a partir de componentes modulares e independentes.
-Optei por usar SSR (Server-Side Rendering) em nossa aplicação para melhorar o SEO, acelerar o carregamento inicial, proporcionar uma melhor experiência de usuário, e facilitar a manutenção e o desenvolvimento.
-Optei por usar o MongoDB como nossa solução de armazenamento visando o uso do SSR garantindo acesso e persistência das informações atraves de um BFF onde ele esta localizado.
+Este projeto é uma aplicação React construída com Next.js 14. Utilizei várias ferramentas e bibliotecas para desenvolvimento, testes e construção da aplicação. A arquitetura é baseada em uma Arquitetura Orientada a Componentes, focando na construção do sistema a partir de componentes modulares e independentes.
+
+Optei por usar SSR (Server-Side Rendering) para melhorar o SEO, acelerar o carregamento inicial, proporcionar uma melhor experiência de usuário e facilitar a manutenção e o desenvolvimento.
+
+Escolhi o MongoDB como nossa solução de armazenamento devido ao uso do SSR, garantindo acesso e persistência das informações através de um BFF (Backend for Frontend) onde ele está localizado.
 
 ### Tecnologias
 
@@ -42,9 +44,8 @@ Para começar com o projeto, você precisa ter o Node.js (v20) e o yarn instalad
 
 Link: [Repositório BFF](doc:https://github.com/ssabrinadias/wishlist-bff)
 
-```
 Esse projeto possui dependencia de uma aplicação BFF sugerimos que clique no link acima, siga os passos de instalação e retome os proximos passos a seguir:
-```
+
 
 Clone the repository FRONT:
 
