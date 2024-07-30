@@ -40,7 +40,16 @@ O projeto é uma aplicação de e-commerce que permite aos usuários adicionar p
 
 Para começar com o projeto, você precisa ter o Node.js (v20) e o yarn instalados.
 
-Clone the repository:
+
+### Atenção
+Link: [Repositório BFF](doc:https://github.com/ssabrinadias/wishlist-bff)
+```
+Esse projeto possui dependencia de uma aplicação BFF sugerimos que clique no link acima, siga os passos de instalação e retome os proximos passos a seguir: 
+```
+
+
+
+Clone the repository FRONT:
 
 ```bash
 git clone https://github.com/ssabrinadias/wishlist
